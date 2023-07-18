@@ -1,11 +1,26 @@
+
+
 package ru.netology;
 
 public class Radio {
     private int currentStations;
     private int currentVolume;
+    private int maxStation;
+    private int maxVolume;
+
+    public Radio() {
+        maxStation = 9;
+        maxVolume = 100;
+    }
+
+    public Radio(int stationsCount, int volumeCount) {
+        maxStation = stationsCount - 1;
+        maxVolume = volumeCount - 1;
+
+    }
 
     public void next() {
-        if (currentStations != 9) {
+        if (currentStations != maxStation) {
             currentStations++;
         } else {
             currentStations = 0;
@@ -16,12 +31,12 @@ public class Radio {
         if (currentStations != 0) {
             currentStations--;
         } else {
-            currentStations = 9;
+            currentStations = maxStation;
         }
     }
 
     public void weightVolume() {
-        if (currentVolume != 100) {
+        if (currentVolume != maxVolume) {
             currentVolume++;
         } else {
             return;
@@ -45,7 +60,7 @@ public class Radio {
         if (currentStations < 0) {
             return;
         }
-        if (currentStations > 9) {
+        if (currentStations > maxStation) {
             return;
         }
         this.currentStations = currentStations;
@@ -59,7 +74,7 @@ public class Radio {
         if (currentVolume <= 0) {
             currentVolume = 0;
         }
-        if (currentVolume >= 100) {
+        if (currentVolume >= maxVolume) {
             currentVolume = 100;
         }
         this.currentVolume = currentVolume;
